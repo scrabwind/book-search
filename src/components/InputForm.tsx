@@ -36,7 +36,7 @@ export function InputForm({ onSubmit }: Props) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-2/3 space-y-6"
+        className="flex items-end gap-4 mb-8"
       >
         <FormField
           control={form.control}
@@ -50,9 +50,9 @@ export function InputForm({ onSubmit }: Props) {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
+              {/* <FormDescription>
                 This is your public display name.
-              </FormDescription>
+              </FormDescription> */}
               <FormMessage />
             </FormItem>
           )}

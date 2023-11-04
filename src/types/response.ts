@@ -5,6 +5,7 @@ export type industryIdentifier = {
 
 export type volumeInfo = {
   title: string
+  authors: string[]
   publishedDate: string
   industryIdentifiers: industryIdentifier[]
   readingModes: {
