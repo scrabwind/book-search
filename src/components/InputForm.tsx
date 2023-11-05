@@ -43,7 +43,7 @@ export function InputForm({ onSubmit }: Props) {
           name="query"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              {/* <FormLabel>Se</FormLabel> */}
               <FormControl>
                 <Input
                   placeholder="Search for book, author"
