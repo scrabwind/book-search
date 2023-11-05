@@ -8,6 +8,8 @@ import {
 import type { Book } from "@/types/response"
 import img from "@/assets/no-cover.jpg"
 
+import { TooltipComponent } from "@/components/Tooltip"
+
 type Props = {
   item: Book
 }
@@ -16,8 +18,8 @@ export function CardComponent({ item }: Props) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="leading-snug line-clamp-2 hover:line-clamp-none">
-          {item?.volumeInfo?.title}
+        <CardTitle>
+          <TooltipComponent text={item?.volumeInfo?.title} />
         </CardTitle>
         <CardDescription>
           {item.volumeInfo?.authors && item.volumeInfo?.authors?.length !== 0
@@ -28,7 +30,7 @@ export function CardComponent({ item }: Props) {
       <CardContent className="flex justify-center">
         {item?.volumeInfo?.imageLinks?.thumbnail ? (
           <img
-            className="h-[178px]"
+            className="h-[172px]"
             src={item?.volumeInfo?.imageLinks?.thumbnail}
             alt={item?.volumeInfo?.title}
           />

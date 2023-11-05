@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react"
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  keepPreviousData
-} from "@tanstack/react-query"
+import { useQuery, keepPreviousData } from "@tanstack/react-query"
 import axios from "axios"
 import { InputForm } from "@/components/InputForm"
 import { type BooksResponse } from "@/types/response"
 import { CardComponent } from "@/components/Card"
 import { Button } from "@/components/ui/button"
 
-const getBooks = async (query: string, index: number) => {
+const getBooks = async (
+  query: string,
+  index: number,
+  filter: string,
+  orderBy: string
+) => {
   const { data } = await axios.get<BooksResponse>(
     "https://www.googleapis.com/books/v1/volumes",
     {
@@ -19,7 +19,8 @@ const getBooks = async (query: string, index: number) => {
         q: `${query}`,
         key: "AIzaSyCSnC9lKxYGJfyzU9a6istxkrUNBkuf87s",
         maxResults: 10,
-        orderBy: "relevance",
+        orderBy: orderBy,
+        filter: filter,
         startIndex: index
       }
     }
@@ -28,34 +29,45 @@ const getBooks = async (query: string, index: number) => {
   return data
 }
 
-const useBooks = (query: string, index: number) => {
+const useBooks = (
+  query: string,
+  index: number,
+  filter: string,
+  orderBy: string
+) => {
   return useQuery({
-    queryKey: ["book", query, index],
-    queryFn: async () => getBooks(query, index),
+    queryKey: ["book", query, index, filter, orderBy],
+    queryFn: async () => getBooks(query, index, filter, orderBy),
     placeholderData: keepPreviousData
     // enabled: !!query
   })
 }
 
 const App = () => {
-  const [title, setTitle] = useState("")
+  const [query, setQuery] = useState("")
+  const [filter, setFilter] = useState("")
+  const [orderBy, setOrderBy] = useState("")
   const [index, setIndex] = useState(0)
   const [page, setPage] = useState(1)
 
-  const { data } = useBooks(title, index)
+  const { data } = useBooks(query, index, filter, orderBy)
 
   useEffect(() => {
-    const page = index / 10 + 1
+    const page = Math.round(index / 10) + 1
     setPage(page)
   }, [index])
 
   return (
     <div className="h-full p-8 relative">
-      <InputForm
-        onSubmit={(data) => {
-          setTitle(data.query)
-        }}
-      />
+      <div className="flex gap-8">
+        <InputForm
+          onSubmit={({ query, filter, orderBy }) => {
+            setQuery(query)
+            setFilter(filter)
+            setOrderBy(orderBy)
+          }}
+        />
+      </div>
       <div className="grid grid-cols-5 gap-4">
         {data?.items?.map((item) =>
           item ? (
@@ -71,22 +83,13 @@ const App = () => {
           disabled={index === 0}
           onClick={() => (index === 0 ? null : setIndex(index - 10))}
         >
-          previous page
+          Previous
         </Button>
-        <Button onClick={() => setIndex(index + 10)}>next page</Button>
-        <span>Current Page: {page}</span>
+        <Button onClick={() => setIndex(index + 10)}>Next</Button>
+        <p>Current Page: {page}</p>
       </div>
     </div>
   )
 }
 
 export default App
-
-// {/* <>
-//           {/* <img
-//             src={item?.volumeInfo?.imageLinks?.thumbnail}
-//             alt={item?.volumeInfo?.title}
-//           /> */}
-//           {}
-
-//         </> */}
