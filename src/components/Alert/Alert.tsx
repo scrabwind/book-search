@@ -19,7 +19,7 @@ export function Alert({
 }: AlertProps) {
   return (
     <BaseAlert
-      className="max-w-[360px]"
+      className="max-w-alert"
       variant={variant}
     >
       {variant === "default" ? (

@@ -30,7 +30,7 @@ export function Card({ title, authors, imageLinks }: CardProps) {
       <CardContent className="flex justify-center">
         {imageLinks?.thumbnail ? (
           <img
-            className="h-[172px]"
+            className="h-cover"
             src={imageLinks?.thumbnail}
             alt={title}
           />

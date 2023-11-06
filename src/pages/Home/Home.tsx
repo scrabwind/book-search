@@ -3,13 +3,13 @@ import { Form } from "@/components/Form/Form"
 import { Card } from "@/components/Card/Card"
 import { Alert } from "@/components/Alert/Alert"
 import { Pagination } from "@/components/Pagination/Pagination"
-import { useBooks, usePages } from "./Home.hooks"
+import { useBooks, usePages } from "@/hooks"
 
 export function Home() {
   const [query, setQuery] = useState("")
   const [filter, setFilter] = useState("")
   const [index, setIndex] = useState(0)
-  const [maxResults, _setMaxResults] = useState(10)
+  const maxResults = 10
 
   const { data, isFetching, isError } = useBooks(query, index, filter)
 
@@ -24,7 +24,7 @@ export function Home() {
   }
 
   return (
-    <div className="h-full p-8 relative">
+    <div className="h-screen p-8 relative">
       <div className="flex gap-8">
         <Form
           onSubmit={({ query, filter }) => {

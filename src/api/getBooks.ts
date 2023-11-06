@@ -69,7 +69,7 @@ export const getBooks = async (
     "https://www.googleapis.com/books/v1/volumes",
     {
       params: {
-        q: `${query}`,
+        q: query,
         maxResults: 10,
         filter: filter,
         startIndex: index,
