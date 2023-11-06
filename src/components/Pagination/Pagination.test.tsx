@@ -22,7 +22,7 @@ describe("Pagination", () => {
     render(
       <Pagination
         {...defaultProps}
-        isFetching={true}
+        isFetching
       />
     )
 
@@ -36,7 +36,7 @@ describe("Pagination", () => {
     render(
       <Pagination
         {...defaultProps}
-        isFirstPage={true}
+        isFirstPage
       />
     )
 
@@ -49,12 +49,12 @@ describe("Pagination", () => {
     render(
       <Pagination
         {...defaultProps}
-        isLastPage={true}
+        isLastPage
       />
     )
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [_, nextPage] = screen.getAllByRole("button")
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/naming-convention
+    const [_prevPage, nextPage] = screen.getAllByRole("button")
 
     expect(nextPage).toBeDisabled()
   })

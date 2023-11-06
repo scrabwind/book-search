@@ -42,6 +42,7 @@ export function Card({ title, authors, imageLinks }: CardProps) {
             width="172"
             height="172"
             src={img}
+            alt="Book cover not found"
           />
         )}
       </CardContent>

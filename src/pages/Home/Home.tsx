@@ -22,54 +22,56 @@ export function Home() {
   )
 
   const onPaginationClick = (isNextPage: boolean) => {
-    isNextPage ? setIndex(index + maxResults) : setIndex(index - maxResults)
+    if (isNextPage) {
+      setIndex(index + maxResults)
+      return
+    }
+    setIndex(index - maxResults)
   }
 
   return (
     <div className={cn("h-screen p-8 relative")}>
       <div className={cn("flex gap-8")}>
         <Form
-          onSubmit={({ query, filter }) => {
-            setQuery(query)
-            setFilter(filter)
+          onSubmit={(submitData) => {
+            setQuery(submitData.query)
+            setFilter(submitData.filter)
             setIndex(0)
           }}
         />
       </div>
-      {
-        <div className={cn("grid grid-cols-5 gap-4")}>
-          {isError && (
-            <Alert
-              variant="destructive"
-              title="There was an error getting response from server"
-              description="Try again later"
+      <div className={cn("grid grid-cols-5 gap-4")}>
+        {isError && (
+          <Alert
+            variant="destructive"
+            title="There was an error getting response from server"
+            description="Try again later"
+          />
+        )}
+        {!data ? (
+          <Alert
+            variant="default"
+            title="Search for the books"
+            description="You can also use filters!"
+          />
+        ) : (
+          data.items?.map((item) => (
+            <Card
+              key={item.id}
+              title={item.volumeInfo.title}
+              authors={item.volumeInfo.authors}
+              imageLinks={item.volumeInfo.imageLinks}
             />
-          )}
-          {!data ? (
-            <Alert
-              variant="default"
-              title="Search for the books"
-              description="You can also use filters!"
-            />
-          ) : (
-            data.items?.map((item) => (
-              <Card
-                key={item.id}
-                title={item.volumeInfo.title}
-                authors={item.volumeInfo.authors}
-                imageLinks={item.volumeInfo.imageLinks}
-              />
-            ))
-          )}
-          {data?.totalItems === 0 && (
-            <Alert
-              variant="default"
-              title="There were no results"
-              description="Try searching up something different"
-            />
-          )}
-        </div>
-      }
+          ))
+        )}
+        {data?.totalItems === 0 && (
+          <Alert
+            variant="default"
+            title="There were no results"
+            description="Try searching up something different"
+          />
+        )}
+      </div>
       <Pagination
         isFetching={isFetching}
         isFirstPage={isFirstPage}

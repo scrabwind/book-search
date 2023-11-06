@@ -9,7 +9,7 @@ import {
 type AlertProps = {
   title: string
   description: string
-  variant?: "default" | "destructive" | null
+  variant: "default" | "destructive" | null
 }
 
 export function Alert({

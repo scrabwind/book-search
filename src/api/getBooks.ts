@@ -71,7 +71,7 @@ export const getBooks = async (
       params: {
         q: query,
         maxResults: 10,
-        filter: filter,
+        filter,
         startIndex: index,
         projection: "lite"
       }

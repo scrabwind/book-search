@@ -6,8 +6,8 @@ export const usePages = (index: number, maxResults: number, itemLength = 0) => {
   const [isLastPage, setIsLastPage] = useState(false)
 
   useEffect(() => {
-    const page = Math.round(index / maxResults) + 1
-    setPage(page)
+    const nextPage = Math.round(index / maxResults) + 1
+    setPage(nextPage)
     setIsFirstPage(index === 0)
     setIsLastPage(maxResults > itemLength) // Doesn't work when last page has 10 elements but totalItems from googleAPI is not working for actual pagination
   }, [index, itemLength, maxResults])

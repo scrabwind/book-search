@@ -1,27 +1,39 @@
-# React + TypeScript + Vite
+# Book Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Search for books using Google Books API
 
-Currently, two official plugins are available:
+https://developers.google.com/books/docs/overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project setup
 
-## Expanding the ESLint configuration
+### To setup project
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+`pnpm install`
 
-- Configure the top-level `parserOptions` property like this:
+`pnpm dev`
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Run tests
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+`pnpm test`
+
+### or with watch mode
+
+`pnpm test:dev`
+
+## Architectural decisions
+
+### Build tools
+
+I don't really consider alternatives to Vite, at least for small project due to growing community, speed and out-of-box experience.
+
+### Code formating
+
+Using prettier and eslint is my go-to choice for consistent code writing usually using airbnb for strict code quality
+
+### UI library
+
+My main goal was to write a solution with minimal UI and clean code. Using [shadcn](https://ui.shadcn.com/) for minimal design was no-brainer since it provides a lot of customization, clean API based on [radix ui](https://www.radix-ui.com/) and proper accessibility features which streamlined the process of creating application.
+
+### CSS library
+
+Since shadcn uses tailwind as it's styling choice that was obvious choice for me to make as well. Tailwind also provided me with ability for quick prototyping.

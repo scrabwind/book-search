@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest"
 import { screen, render } from "@testing-library/react"
-import { Card } from "./Card"
 import img from "@/assets/no-cover.jpg"
+import { Card } from "./Card"
 
 describe("Card", () => {
   const defaultTitle = "Default Title"

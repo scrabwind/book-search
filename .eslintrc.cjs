@@ -2,17 +2,24 @@ module.exports = {
   root: true,
   env: { browser: true, es2023: true },
   extends: [
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
-    "plugin:@tanstack/eslint-plugin-query/recommended"
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "prettier"
   ],
   ignorePatterns: [
     "dist",
     "node_modules",
     "assets",
     ".eslintrc.cjs",
-    "*.config.*"
+    "*.config.*",
+    "ui"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -31,6 +38,8 @@ module.exports = {
       "warn",
       { allowConstantExport: true }
     ],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

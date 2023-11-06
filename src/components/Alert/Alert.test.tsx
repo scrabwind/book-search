@@ -36,7 +36,7 @@ describe("Alert", () => {
       <Alert
         title={defaultTitle}
         description={defaultDescription}
-        variant={"destructive"}
+        variant="destructive"
       />
     )
 
