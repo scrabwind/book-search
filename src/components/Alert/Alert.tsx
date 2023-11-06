@@ -1,5 +1,5 @@
 import { Info, XCircle } from "lucide-react"
-
+import { cn } from "@/utils"
 import {
   Alert as BaseAlert,
   AlertDescription,
@@ -19,17 +19,17 @@ export function Alert({
 }: AlertProps) {
   return (
     <BaseAlert
-      className="max-w-alert"
+      className={cn("max-w-alert")}
       variant={variant}
     >
       {variant === "default" ? (
         <Info
-          className="h-4 w-4"
+          className={cn("h-4 w-4")}
           data-testid="info-icon"
         />
       ) : (
         <XCircle
-          className="h-4 w-4"
+          className={cn("h-4 w-4")}
           data-testid="error-icon"
         />
       )}

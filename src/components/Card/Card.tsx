@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card"
 import { type VolumeInfo } from "@/api/getBooks"
 import img from "@/assets/no-cover.jpg"
+import { cn } from "@/utils"
 
 import { Tooltip } from "@/components/Tooltip/Tooltip"
 
@@ -27,11 +28,11 @@ export function Card({ title, authors, imageLinks }: CardProps) {
           )}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex justify-center">
+      <CardContent className={cn("flex justify-center")}>
         {imageLinks?.thumbnail ? (
           <img
             data-testid="book-cover"
-            className="h-cover"
+            className={cn("h-cover")}
             src={imageLinks?.thumbnail}
             alt={title}
           />

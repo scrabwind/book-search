@@ -1,3 +1,5 @@
+import { cn } from "@/utils"
+
 import {
   Tooltip as BaseTooltip,
   TooltipContent,
@@ -17,12 +19,12 @@ export function Tooltip({ text }: TooltipProps) {
     >
       <BaseTooltip>
         <TooltipTrigger>
-          <p className="text-left leading-tight line-clamp-2 cursor-auto">
+          <p className={cn("text-left leading-tight line-clamp-2 cursor-auto")}>
             {text}
           </p>
         </TooltipTrigger>
         <TooltipContent>
-          <p className="max-w-xs">{text}</p>
+          <p className={cn("max-w-xs")}>{text}</p>
         </TooltipContent>
       </BaseTooltip>
     </TooltipProvider>

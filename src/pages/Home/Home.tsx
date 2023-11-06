@@ -1,9 +1,11 @@
 import { useState } from "react"
+
+import { cn } from "@/utils"
+import { useBooks, usePages } from "@/hooks"
 import { Form } from "@/components/Form/Form"
 import { Card } from "@/components/Card/Card"
 import { Alert } from "@/components/Alert/Alert"
 import { Pagination } from "@/components/Pagination/Pagination"
-import { useBooks, usePages } from "@/hooks"
 
 export function Home() {
   const [query, setQuery] = useState("")
@@ -24,8 +26,8 @@ export function Home() {
   }
 
   return (
-    <div className="h-screen p-8 relative">
-      <div className="flex gap-8">
+    <div className={cn("h-screen p-8 relative")}>
+      <div className={cn("flex gap-8")}>
         <Form
           onSubmit={({ query, filter }) => {
             setQuery(query)
@@ -35,7 +37,7 @@ export function Home() {
         />
       </div>
       {
-        <div className="grid grid-cols-5 gap-4">
+        <div className={cn("grid grid-cols-5 gap-4")}>
           {isError && (
             <Alert
               variant="destructive"

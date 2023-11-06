@@ -1,9 +1,8 @@
-"use client"
-
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
+import { cn } from "@/utils"
 import { Button } from "@/components/ui/button"
 import {
   Form as BaseForm,
@@ -44,7 +43,7 @@ export function Form({ onSubmit }: FormProps) {
     <BaseForm {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex items-end gap-4 mb-8"
+        className={cn("flex items-end gap-4 mb-8")}
       >
         <FormField
           control={form.control}

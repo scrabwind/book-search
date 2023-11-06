@@ -1,3 +1,4 @@
+import { cn } from "@/utils"
 import { Button } from "@/components/ui/button"
 
 export type PaginationProps = {
@@ -16,7 +17,11 @@ export function Pagination({
   onPaginationClick
 }: PaginationProps) {
   return (
-    <nav className="absolute bottom-0 mb-8 flex justify-center items-center gap-4">
+    <nav
+      className={cn(
+        "absolute bottom-0 mb-8 flex justify-center items-center gap-4"
+      )}
+    >
       <Button
         disabled={isFirstPage || isFetching}
         onClick={() => onPaginationClick(false)}
