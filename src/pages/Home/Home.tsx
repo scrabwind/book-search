@@ -3,7 +3,7 @@ import { Form } from "@/components/Form/Form"
 import { Card } from "@/components/Card/Card"
 import { Alert } from "@/components/Alert/Alert"
 import { Pagination } from "@/components/Pagination/Pagination"
-import { useBooks, usePages } from "@/hooks"
+import { useBooks, usePages } from "./Home.hooks"
 
 export function Home() {
   const [query, setQuery] = useState("")

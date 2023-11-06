@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { keepPreviousData, useQuery } from "@tanstack/react-query"
+import { getBooks } from "@/api/getBooks"
 
 export const usePages = (index: number, maxResults: number, itemLength = 0) => {
   const [page, setPage] = useState(1)
@@ -13,4 +15,13 @@ export const usePages = (index: number, maxResults: number, itemLength = 0) => {
   }, [index, itemLength])
 
   return { page, isFirstPage, isLastPage }
+}
+
+export const useBooks = (query: string, index: number, filter: string) => {
+  return useQuery({
+    queryKey: ["book", query, index, filter],
+    queryFn: async () => getBooks(query, index, filter),
+    placeholderData: keepPreviousData,
+    enabled: !!query
+  })
 }
