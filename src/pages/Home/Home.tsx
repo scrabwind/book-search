@@ -36,32 +36,34 @@ export function Home() {
       </div>
       {
         <div className="grid grid-cols-5 gap-4">
-          {isError ? (
+          {isError && (
             <Alert
               variant="destructive"
               title="There was an error getting response from server"
               description="Try again later"
             />
-          ) : data ? (
-            data.totalItems === 0 ? (
-              <Alert
-                variant="default"
-                title="There were no results"
-                description="Try searching up something different"
-              />
-            ) : (
-              data.items?.map((item) => (
-                <Card
-                  key={item.id}
-                  item={item?.volumeInfo}
-                />
-              ))
-            )
-          ) : (
+          )}
+          {!data ? (
             <Alert
               variant="default"
               title="Search for the books"
               description="You can also use filters!"
+            />
+          ) : (
+            data.items?.map((item) => (
+              <Card
+                key={item.id}
+                title={item.volumeInfo.title}
+                authors={item.volumeInfo.authors}
+                imageLinks={item.volumeInfo.imageLinks}
+              />
+            ))
+          )}
+          {data?.totalItems === 0 && (
+            <Alert
+              variant="default"
+              title="There were no results"
+              description="Try searching up something different"
             />
           )}
         </div>

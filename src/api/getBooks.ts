@@ -15,9 +15,9 @@ export type VolumeInfo = {
     containsEpubBubbles: boolean
     containsImageBubbles: boolean
   }
-  imageLinks: {
-    smallThumbnail: string
-    thumbnail: string
+  imageLinks?: {
+    smallThumbnail?: string
+    thumbnail?: string
   }
   previewLink: string
   infoLink: string

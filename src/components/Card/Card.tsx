@@ -10,31 +10,29 @@ import img from "@/assets/no-cover.jpg"
 
 import { Tooltip } from "@/components/Tooltip/Tooltip"
 
-type CardProps = {
-  item: VolumeInfo
-}
+type CardProps = Pick<VolumeInfo, "title" | "imageLinks" | "authors">
 
-export function Card({ item }: CardProps) {
+export function Card({ title, authors, imageLinks }: CardProps) {
   return (
     <BaseCard>
       <CardHeader>
         <CardTitle>
-          <Tooltip text={item?.title} />
+          <Tooltip text={title} />
         </CardTitle>
         <CardDescription>
-          {item.authors && item.authors?.length !== 0 ? (
-            <Tooltip text={item?.authors.join(", ")} />
+          {authors?.length ? (
+            <Tooltip text={authors.join(", ")} />
           ) : (
-            "No author provided"
+            <p>No author provided</p>
           )}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center">
-        {item?.imageLinks?.thumbnail ? (
+        {imageLinks?.thumbnail ? (
           <img
             className="h-[172px]"
-            src={item?.imageLinks?.thumbnail}
-            alt={item?.title}
+            src={imageLinks?.thumbnail}
+            alt={title}
           />
         ) : (
           <img
