@@ -14,7 +14,7 @@ type CardProps = Pick<VolumeInfo, "title" | "imageLinks" | "authors">
 
 export function Card({ title, authors, imageLinks }: CardProps) {
   return (
-    <BaseCard>
+    <BaseCard data-testid="card">
       <CardHeader>
         <CardTitle>
           <Tooltip text={title} />
@@ -30,12 +30,14 @@ export function Card({ title, authors, imageLinks }: CardProps) {
       <CardContent className="flex justify-center">
         {imageLinks?.thumbnail ? (
           <img
+            data-testid="book-cover"
             className="h-cover"
             src={imageLinks?.thumbnail}
             alt={title}
           />
         ) : (
           <img
+            data-testid="book-cover"
             width="172"
             height="172"
             src={img}

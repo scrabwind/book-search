@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 
-type PaginationProps = {
+export type PaginationProps = {
   isFirstPage: boolean
   isFetching: boolean
   isLastPage: boolean
@@ -16,7 +16,7 @@ export function Pagination({
   onPaginationClick
 }: PaginationProps) {
   return (
-    <div className="absolute bottom-0 mb-8 flex justify-center items-center gap-4">
+    <nav className="absolute bottom-0 mb-8 flex justify-center items-center gap-4">
       <Button
         disabled={isFirstPage || isFetching}
         onClick={() => onPaginationClick(false)}
@@ -30,6 +30,6 @@ export function Pagination({
         Next
       </Button>
       <p>Current Page: {page}</p>
-    </div>
+    </nav>
   )
 }
