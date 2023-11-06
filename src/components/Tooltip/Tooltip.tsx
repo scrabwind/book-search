@@ -1,17 +1,21 @@
 import {
-  Tooltip,
+  Tooltip as BaseTooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
 } from "@/components/ui/tooltip"
 
-export function TooltipComponent({ text }: { text: string }) {
+type TooltipProps = {
+  text: string
+}
+
+export function Tooltip({ text }: TooltipProps) {
   return (
     <TooltipProvider
       delayDuration={100}
       skipDelayDuration={0}
     >
-      <Tooltip>
+      <BaseTooltip>
         <TooltipTrigger>
           <p className="text-left leading-tight line-clamp-2 cursor-auto">
             {text}
@@ -20,7 +24,7 @@ export function TooltipComponent({ text }: { text: string }) {
         <TooltipContent>
           <p className="max-w-xs">{text}</p>
         </TooltipContent>
-      </Tooltip>
+      </BaseTooltip>
     </TooltipProvider>
   )
 }

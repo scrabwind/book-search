@@ -1,19 +1,13 @@
-export type industryIdentifier = {
-  type: string
-  identifier: string
-}
+import axios from "axios"
 
-export type volumeInfo = {
+export type VolumeInfo = {
   title: string
-  authors: string[]
+  authors?: string[]
   publishedDate: string
-  industryIdentifiers: industryIdentifier[]
   readingModes: {
     text: boolean
     image: boolean
   }
-  pageCount: number
-  printType: string
   maturityRating: string
   allowAnonLogging: boolean
   contentVersion: string
@@ -25,25 +19,18 @@ export type volumeInfo = {
     smallThumbnail: string
     thumbnail: string
   }
-  language: string
   previewLink: string
   infoLink: string
   canonicalVolumeLink: string
 }
 
-export type saleInfo = {
+export type SaleInfo = {
   country: string
-  saleability: string
-  isEbook: boolean
   buyLink: string
 }
 
-export type accessInfo = {
+export type AccessInfo = {
   country: string
-  viewability: string
-  embeddable: boolean
-  publicDomain: boolean
-  textToSpeechPermission: string
   epub: {
     isAvailable: boolean
   }
@@ -52,7 +39,6 @@ export type accessInfo = {
   }
   webReaderLink: string
   accessViewStatus: string
-  quoteSharingAllowed: boolean
 }
 
 export type Book = {
@@ -60,9 +46,9 @@ export type Book = {
   id: string
   etag: string
   selfLink: string
-  volumeInfo: volumeInfo
-  saleInfo: saleInfo
-  accessInfo: accessInfo
+  volumeInfo: VolumeInfo
+  saleInfo: SaleInfo
+  accessInfo: AccessInfo
   searchInfo: {
     textSnippet: string
   }
@@ -71,5 +57,26 @@ export type Book = {
 export type BooksResponse = {
   kind: string
   totalItems: number
-  items: Book[]
+  items?: Book[]
+}
+
+export const getBooks = async (
+  query: string,
+  index: number,
+  filter: string
+) => {
+  const { data } = await axios.get<BooksResponse>(
+    "https://www.googleapis.com/books/v1/volumes",
+    {
+      params: {
+        q: `${query}`,
+        maxResults: 10,
+        filter: filter,
+        startIndex: index,
+        projection: "lite"
+      }
+    }
+  )
+
+  return data
 }

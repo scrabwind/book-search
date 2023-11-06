@@ -6,7 +6,7 @@ import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
 import {
-  Form,
+  Form as BaseForm,
   FormControl,
   FormField,
   FormItem,
@@ -27,11 +27,11 @@ const FormSchema = z.object({
   filter: z.string()
 })
 
-type Props = {
+type FormProps = {
   onSubmit: (data: z.infer<typeof FormSchema>) => void
 }
 
-export function InputForm({ onSubmit }: Props) {
+export function Form({ onSubmit }: FormProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -41,7 +41,7 @@ export function InputForm({ onSubmit }: Props) {
   })
 
   return (
-    <Form {...form}>
+    <BaseForm {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex items-end gap-4 mb-8"
@@ -91,6 +91,6 @@ export function InputForm({ onSubmit }: Props) {
         />
         <Button type="submit">Search</Button>
       </form>
-    </Form>
+    </BaseForm>
   )
 }

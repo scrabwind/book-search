@@ -1,29 +1,29 @@
 import {
-  Card,
+  Card as BaseCard,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
-import type { volumeInfo } from "@/types/response"
+import { type VolumeInfo } from "@/api/getBooks"
 import img from "@/assets/no-cover.jpg"
 
-import { TooltipComponent } from "@/components/Tooltip"
+import { Tooltip } from "@/components/Tooltip/Tooltip"
 
-type Props = {
-  item: volumeInfo
+type CardProps = {
+  item: VolumeInfo
 }
 
-export function CardComponent({ item }: Props) {
+export function Card({ item }: CardProps) {
   return (
-    <Card>
+    <BaseCard>
       <CardHeader>
         <CardTitle>
-          <TooltipComponent text={item?.title} />
+          <Tooltip text={item?.title} />
         </CardTitle>
         <CardDescription>
           {item.authors && item.authors?.length !== 0 ? (
-            <TooltipComponent text={item?.authors.join(", ")} />
+            <Tooltip text={item?.authors.join(", ")} />
           ) : (
             "No author provided"
           )}
@@ -44,6 +44,6 @@ export function CardComponent({ item }: Props) {
           />
         )}
       </CardContent>
-    </Card>
+    </BaseCard>
   )
 }

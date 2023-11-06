@@ -1,10 +1,20 @@
 import { Info, XCircle } from "lucide-react"
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import {
+  Alert as BaseAlert,
+  AlertDescription,
+  AlertTitle
+} from "@/components/ui/alert"
 
-export function AlertComponent({ variant, title = "", description = "" }: any) {
+type AlertProps = {
+  title: string
+  description: string
+  variant?: "default" | "destructive" | null
+}
+
+export function Alert({ variant, title = "", description = "" }: AlertProps) {
   return (
-    <Alert
+    <BaseAlert
       className="max-w-[360px]"
       variant={variant}
     >
@@ -15,6 +25,6 @@ export function AlertComponent({ variant, title = "", description = "" }: any) {
       )}
       <AlertTitle>{title}</AlertTitle>
       <AlertDescription>{description}</AlertDescription>
-    </Alert>
+    </BaseAlert>
   )
 }
