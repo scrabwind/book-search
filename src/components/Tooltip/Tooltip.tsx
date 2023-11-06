@@ -12,17 +12,26 @@ type TooltipProps = {
 export function Tooltip({ text }: TooltipProps) {
   return (
     <TooltipProvider
+      data-testid="tooltip"
       delayDuration={100}
       skipDelayDuration={0}
     >
       <BaseTooltip>
         <TooltipTrigger>
-          <p className="text-left leading-tight line-clamp-2 cursor-auto">
+          <p
+            data-testid="tooltip-text"
+            className="text-left leading-tight line-clamp-2 cursor-auto"
+          >
             {text}
           </p>
         </TooltipTrigger>
         <TooltipContent>
-          <p className="max-w-xs">{text}</p>
+          <p
+            data-testid="tooltip-content"
+            className="max-w-xs"
+          >
+            {text}
+          </p>
         </TooltipContent>
       </BaseTooltip>
     </TooltipProvider>
