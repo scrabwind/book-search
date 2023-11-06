@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom/vitest"
 import { describe, it, expect } from "vitest"
 import { screen, render } from "@testing-library/react"
 import { Card } from "./Card"

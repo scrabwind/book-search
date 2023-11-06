@@ -7,13 +7,14 @@ describe("Tooltip", () => {
   const defaultText = "Default Text"
   it("Text visible", () => {
     render(<Tooltip text={defaultText} />)
-    const visibleText = screen.getByTestId("tooltip-text")
+    const visibleText = screen.getByRole("button")
 
     expect(visibleText).toHaveTextContent(defaultText)
   })
 
   it("Tooltip visible on hover with correct text", async () => {
     const user = userEvent.setup()
+
     render(<Tooltip text={defaultText} />)
 
     const tooltip = screen.getByRole("button")
