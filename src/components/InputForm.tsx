@@ -23,9 +23,8 @@ import {
 } from "@/components/ui/select"
 
 const FormSchema = z.object({
-  query: z.string().min(1),
-  filter: z.string(),
-  orderBy: z.string()
+  query: z.string(),
+  filter: z.string()
 })
 
 type Props = {
@@ -37,8 +36,7 @@ export function InputForm({ onSubmit }: Props) {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       query: "",
-      filter: "ebooks",
-      orderBy: "relevance"
+      filter: "ebooks"
     }
   })
 
@@ -85,30 +83,6 @@ export function InputForm({ onSubmit }: Props) {
                   <SelectItem value="paid-ebooks">Paid ebooks</SelectItem>
                   <SelectItem value="full">Full text</SelectItem>
                   <SelectItem value="partial">Partial text</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="orderBy"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Order by</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Order by" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="relevance">Relevance</SelectItem>
-                  <SelectItem value="newest">Newest</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />

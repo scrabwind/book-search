@@ -5,13 +5,13 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
-import type { Book } from "@/types/response"
+import type { volumeInfo } from "@/types/response"
 import img from "@/assets/no-cover.jpg"
 
 import { TooltipComponent } from "@/components/Tooltip"
 
 type Props = {
-  item: Book
+  item: volumeInfo
 }
 
 export function CardComponent({ item }: Props) {
@@ -19,20 +19,22 @@ export function CardComponent({ item }: Props) {
     <Card>
       <CardHeader>
         <CardTitle>
-          <TooltipComponent text={item?.volumeInfo?.title} />
+          <TooltipComponent text={item?.title} />
         </CardTitle>
         <CardDescription>
-          {item.volumeInfo?.authors && item.volumeInfo?.authors?.length !== 0
-            ? item.volumeInfo?.authors?.join(", ")
-            : "No author provided"}
+          {item.authors && item.authors?.length !== 0 ? (
+            <TooltipComponent text={item?.authors.join(", ")} />
+          ) : (
+            "No author provided"
+          )}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center">
-        {item?.volumeInfo?.imageLinks?.thumbnail ? (
+        {item?.imageLinks?.thumbnail ? (
           <img
             className="h-[172px]"
-            src={item?.volumeInfo?.imageLinks?.thumbnail}
-            alt={item?.volumeInfo?.title}
+            src={item?.imageLinks?.thumbnail}
+            alt={item?.title}
           />
         ) : (
           <img
@@ -42,9 +44,6 @@ export function CardComponent({ item }: Props) {
           />
         )}
       </CardContent>
-      {/* <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter> */}
     </Card>
   )
 }

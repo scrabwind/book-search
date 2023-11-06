@@ -13,7 +13,7 @@ export function TooltipComponent({ text }: { text: string }) {
     >
       <Tooltip>
         <TooltipTrigger>
-          <p className="text-left leading-snug line-clamp-2 cursor-auto">
+          <p className="text-left leading-tight line-clamp-2 cursor-auto">
             {text}
           </p>
         </TooltipTrigger>
