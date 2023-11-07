@@ -1,30 +1,23 @@
 import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
-import { Alert } from "./Alert"
+import { Alert, type AlertProps } from "./Alert"
 
 describe("Alert", () => {
-  const defaultTitle = "Default title"
-  const defaultDescription = "Default Description"
+  const defaultProps: AlertProps = {
+    description: "Default Description",
+    title: "Default Title",
+    variant: "default"
+  }
   it("Displays title and description", () => {
-    render(
-      <Alert
-        title={defaultTitle}
-        description={defaultDescription}
-      />
-    )
+    render(<Alert {...defaultProps} />)
 
     const element = screen.getByRole("alert")
 
-    expect(element).toHaveTextContent(defaultTitle)
+    expect(element).toHaveTextContent(defaultProps.title)
   })
 
   it("Displays default variant", () => {
-    render(
-      <Alert
-        title={defaultTitle}
-        description={defaultDescription}
-      />
-    )
+    render(<Alert {...defaultProps} />)
 
     const icon = screen.getByTestId("info-icon")
 
@@ -34,8 +27,7 @@ describe("Alert", () => {
   it("Displays error variant", () => {
     render(
       <Alert
-        title={defaultTitle}
-        description={defaultDescription}
+        {...defaultProps}
         variant="destructive"
       />
     )

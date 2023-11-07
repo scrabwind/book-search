@@ -6,7 +6,7 @@ import {
   AlertTitle
 } from "@/components/ui/alert"
 
-type AlertProps = {
+export type AlertProps = {
   title: string
   description: string
   variant: "default" | "destructive" | null
