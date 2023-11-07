@@ -1,5 +1,7 @@
 # Book Search
 
+Visit the page at: https://book-search-blue-seven.vercel.app/
+
 ## Search for books using Google Books API
 
 https://developers.google.com/books/docs/overview
@@ -24,11 +26,11 @@ https://developers.google.com/books/docs/overview
 
 ### Build tools
 
-I don't really consider alternatives to Vite, at least for small project due to growing community, speed and out-of-box experience.
+I don't really consider alternatives to Vite anymore, at least for small project due to growing community, speed and out-of-box experience.
 
 ### Code formating
 
-Using prettier and eslint is my go-to choice for consistent code writing using airbnb for strict code quality while disabling some really opinionated formating that I do not agree with.
+Using prettier and eslint is my go-to choice for consistent code writing using airbnb config for strict and consistent code while disabling some really opinionated formating that I do not agree with.
 
 ### UI library
 
@@ -36,7 +38,7 @@ My main goal was to write a solution with minimal UI and clean code. Using [shad
 
 ### CSS library
 
-Since shadcn uses tailwind as it's styling choice that was obvious choice for me to make as well. Tailwind also provided me with ability for quick prototyping.
+Since shadcn uses tailwind as it's styling choice I was keen to follow. Tailwind also provided me with ability for quick prototyping.
 
 ### Making requests
 
@@ -52,4 +54,4 @@ For testing I went with [Vitest](https://vitest.dev/) and [Testing Library](http
 
 #### Jest vs Vitest
 
-I went with Vitest since it's easier intergration with Vite while API beging basically the same. Also Vitest UI mode is kinda nice
+I went with Vitest because of intergration with Vite while API begging basically the same. Also Vitest UI mode is kinda nice
