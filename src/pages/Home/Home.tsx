@@ -31,7 +31,7 @@ export function Home() {
 
   return (
     <div className={cn("h-screen p-8 relative")}>
-      <div className={cn("flex gap-8")}>
+      <header className={cn("flex gap-8")}>
         <Form
           onSubmit={(submitData) => {
             setQuery(submitData.query)
@@ -39,8 +39,8 @@ export function Home() {
             setIndex(0)
           }}
         />
-      </div>
-      <div className={cn("grid grid-cols-5 gap-4")}>
+      </header>
+      <main className={cn("grid grid-cols-5 gap-4")}>
         {isError && (
           <Alert
             variant="destructive"
@@ -71,7 +71,7 @@ export function Home() {
             description="Try searching up something different"
           />
         )}
-      </div>
+      </main>
       <Pagination
         isFetching={isFetching}
         isFirstPage={isFirstPage}

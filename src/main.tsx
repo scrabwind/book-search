@@ -4,7 +4,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query"
 
 import "@/styles/normalize.css"
-import "@/styles/index.css"
 import "@/styles/globals.css"
 
 import { App } from "./App"
